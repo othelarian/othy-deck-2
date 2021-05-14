@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+  font: sans-serif 12px;
+  background: #444;
+  color: white;
+}
+
+button {
+  border-radius: 3px;
+}
+
+/* DATA VIZ */
+
+.dataviz > textarea {
+  width: 90%;
+  max-width: 90%;
+  min-width: 90%;
+  height: 14rem;
+  min-height: 14rem;
+  margin: auto;
+  display: block;
+}
+
+/* FIRST LINE */
+
+.first-line {
+  text-align: center;
+  border-top: 1px dotted #aaa;
+  border-bottom: 1px dotted #aaa;
+}
+
+.first-line > button {
+  margin: 3px;
+}
+
+/* HEADER */
+
+.header {
+  text-align: center;
+  font-weight: bold;
+}
+
+.header > button {
+  font-size: 1.1rem;
+  color: white;
+  background: #444;
+  margin: 5px;
+}
+
+.header > .selected {
+  border: solid 1px white;
+}
+
+.header > .unselected {
+  border: solid 1px #666;
+  color: #aaa;
+}
+
+.header > .unselected:hover {
+  border: solid 1px white;
+  color: white;
+}
+
+/* HELPERS */
+
+.err {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* TABLE */
+
+.deck-block {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  height: 140px;
+  width: 100px;
+  border: solid 1px white;
+  border-radius: 5px;
+  margin: 20px;
+}
