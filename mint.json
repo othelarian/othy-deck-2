@@ -3,7 +3,8 @@
   "application": {
     "head": "assets/head.html",
     "title": "Othy Deck 2",
-    "name": "Othy Deck 2"
+    "name": "Othy Deck 2",
+    "icon": "assets/favicon.png"
   },
   "external": {
     "stylesheets": [

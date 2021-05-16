@@ -1,9 +1,19 @@
+enum DataState {
+  FromDeck
+  Modified(String)
+}
+
 enum DeckAction {
   ChangeDataState(DataState)
   Generate
   /* TODO : not sure about ParseData */
   ParseData(String)
   /*  */
+}
+
+enum TableState {
+  Classic
+  Discard
 }
 
 module DeckHelper {
@@ -13,14 +23,11 @@ module DeckHelper {
   }
 }
 
-enum DataState {
-  FromDeck
-  Modified(String)
-}
-
 store Deck {
-  state curr = []
+  state current = []
   state dataState = DataState::FromDeck
+  state discarded = Maybe::Nothing
+  state tableState = TableState::Classic
 
   fun actOn(action : DeckAction) {
     case (action) {
@@ -44,7 +51,7 @@ store Deck {
     try {
       ncurr =
         Object.Decode.field("curr", decCurr, v)
-      next { curr = ncurr }
+      next { current = ncurr }
       next { dataState = DataState::FromDeck }
       DataErr::No
     } catch Object.Error => error {
@@ -55,7 +62,7 @@ store Deck {
   }
 
   fun generate {
-    next { curr = cards }
+    next { current = cards }
   } where {
     lgth = 14 /* TODO : modify the lgth */
     cards = Array.range(0, 14)
@@ -76,7 +83,7 @@ store Deck {
     |> Json.stringify()
   } where {
     jsonCurr =
-      Object.Encode.array(curr)
+      Object.Encode.array(current)
       |> Object.Encode.field("curr")
   }
 
@@ -89,7 +96,7 @@ store Deck {
 
 
   fun testlogDeck {
-    Debug.log(curr)
+    Debug.log(current)
   }
 
 }
