@@ -7,12 +7,11 @@ component Main {
   connect ShowTime exposing { showed }
   connect Deck exposing { generate, testlogDeck }
 
-  state logState = LogState::LogOff
+  state logState = LogState::LogOn
 
   fun componentDidMount : Promise(Never, Void) {
     sequence { generate() }
   }
-
 
   fun testlog {
     testlogDeck()

@@ -4,7 +4,13 @@
     "head": "assets/head.html",
     "title": "Othy Deck 2",
     "name": "Othy Deck 2",
-    "icon": "assets/favicon.png"
+    "icon": "assets/favicon.png",
+    "display": "standalone",
+    "orientation": "portrait",
+    "meta": {
+      "viewport": "width=device-width, initial-scale=1, user-scalable=no",
+      "charset": "utf-8"
+    }
   },
   "external": {
     "stylesheets": [

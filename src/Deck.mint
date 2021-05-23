@@ -16,17 +16,14 @@ enum TableState {
   Discard
 }
 
-module DeckHelper {
-  fun rand (v : Number) : Number {
-    Math.random() * v
-    |> Math.floor()
-  }
-}
-
 store Deck {
+  state consumedLength = 0
   state current = []
   state dataState = DataState::FromDeck
-  state discarded = Maybe::Nothing
+  state deck = []
+  state deckLength = 54 /* TODO : bad calculation */
+  state discarded = []
+  state drawed = []
   state tableState = TableState::Classic
 
   fun actOn(action : DeckAction) {
@@ -62,12 +59,14 @@ store Deck {
   }
 
   fun generate {
-    next { current = cards }
+    sequence {
+      next { deck = DeckHelper.buildDeck() }
+      next { current = cards }
+    }
   } where {
-    lgth = 14 /* TODO : modify the lgth */
-    cards = Array.range(0, 14)
+    cards = Array.range(0, deckLength - 1)
     |> Array.mapWithIndex(
-      (i : Number, v : Number) { DeckHelper.rand(lgth - (i - 1)) })
+      (i : Number, v : Number) { DeckHelper.rand(deckLength - i) })
   }
 
   fun printData : String {
@@ -96,7 +95,10 @@ store Deck {
 
 
   fun testlogDeck {
-    Debug.log(current)
+    sequence {
+      Debug.log(current)
+      Debug.log(Array.size(current))
+    }
   }
 
 }

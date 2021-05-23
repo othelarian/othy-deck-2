@@ -72,14 +72,51 @@ button {
 /* TABLE */
 
 .card {
-  display: inline-block;
   text-align: center;
   height: 120px;
   width: 85px;
+  min-width: 85px;
   border-radius: 5px;
   margin: 15px;
   border: solid 1px white;
   box-sizing: border-box;
+  position: relative;
+}
+
+.card > span {
+  display: block;
+}
+
+.card > span:first-of-type {
+  margin-top: 10px;
+}
+
+.card span.ace {
+  font-size: 4rem;
+}
+
+.card span.big {
+  font-size: 2rem;
+}
+
+.card span.card-btn {
+  text-align: center;
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+}
+
+.card span.figure {
+  font-size: 1.5rem;
+}
+
+.card span.figure-suit {
+  font-size: 2.6rem;
+}
+
+.card span.medium {
+  font-size: 1.3rem;
 }
 
 .deck-block > button {
@@ -98,4 +135,12 @@ button {
   display: flex;
   margin: auto;
   width: fit-content;
+  border-bottom: dotted 1px gray;
+}
+
+.table-show-zone {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
